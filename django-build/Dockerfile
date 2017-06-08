@@ -1,6 +1,6 @@
 # Docker django-build ubuntu image
 
-FROM beevelop/android-nodejs
+FROM ubuntu:14.04
 MAINTAINER Anush
 
 # install dependencies
