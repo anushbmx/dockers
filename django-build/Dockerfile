@@ -6,5 +6,5 @@ MAINTAINER Anush
 # install dependencies
 RUN apt-get update
 RUN apt-get install -y python python-pip libmysqlclient-dev python-dev
-RUN sudo apt-get install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
-RUN sudo apt-get install libmysqlclient-dev
+RUN apt-get install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
+RUN apt-get install libmysqlclient-dev
