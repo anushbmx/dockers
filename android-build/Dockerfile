@@ -129,7 +129,7 @@ RUN echo y | android update sdk --no-ui --all --filter extra-google-google_play_
 #RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-23 | grep 'package installed'
 
 # Copy install tools
-COPY tools /opt/tools
+# COPY tools /opt/tools
 
 #Copy accepted android licenses
 COPY licenses ${ANDROID_SDK_HOME}/licenses
