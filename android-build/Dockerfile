@@ -15,7 +15,7 @@ RUN apt-get update -qq
 #RUN dpkg --add-architecture i386
 #RUN apt-get update -qq
 #RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-8-jdk libc6:i386 libstdc++6:i386 libgcc1:i386 libncurses5:i386 libz1:i386
-RUN apt-get install -y openjdk-8-jdk wget expect
+RUN apt-get install -y openjdk-8-jdk wget expect 
 
 # ------------------------------------------------------
 # --- Download Android SDK tools into $ANDROID_SDK_HOME
@@ -139,6 +139,12 @@ RUN /opt/tools/android-accept-licenses.sh android update sdk --no-ui --obsolete 
 
 USER root
 
+# Installing Node
+RUN curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz --strip-components=1 
+RUN rm -rf /var/lib/apt/lists/*
+
 RUN apt-get clean
 
 VOLUME ["/opt/android-sdk-linux"]
+
+
