@@ -139,6 +139,9 @@ RUN /opt/tools/android-accept-licenses.sh android update sdk --no-ui --obsolete 
 
 USER root
 
+ENV NODEJS_VERSION=8.3.0 \
+    PATH=$PATH:/opt/node/bin
+
 # Installing Node
 RUN curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz --strip-components=1 
 RUN rm -rf /var/lib/apt/lists/*
