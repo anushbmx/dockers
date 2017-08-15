@@ -6,7 +6,13 @@ MAINTAINER Anush
 # ------------------------------------------------------
 # --- Install required tools
 
-RUN apt-get update -qq
+RUN apt-get update -y && \
+	apt-get install -y \
+		curl \
+		git \
+		make \
+		maven \
+		openjdk-8*
 
 # Base (non android specific) tools
 # -> should be added to bitriseio/docker-bitrise-base
