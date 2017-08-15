@@ -3,9 +3,11 @@
 FROM beevelop/android-nodejs
 MAINTAINER Anush
 
-RUN npm i -g yarn && \
-    echo y | android update sdk --no-ui --all --filter addon-google_apis-google-23 && \
+RUN npm i -g yarn && \echo
+     y | android update sdk --no-ui --all --filter addon-google_apis-google-23 && \
     echo y | android update sdk --no-ui --all --filter addon-google_apis-google-24 && \
+    echo y | android update sdk --no-ui --all --filter addon-google_apis-google-25 && \
+    echo y | android update sdk --no-ui --all --filter addon-google_apis-google-26 && \
     echo y | android update sdk --no-ui --all --filter addon-google_apis-google-22 && \
     echo y | android update sdk --no-ui --all --filter addon-google_apis-google-21 && \
     echo y | android update sdk --no-ui --all --filter build-tools-23.0.1 && \
