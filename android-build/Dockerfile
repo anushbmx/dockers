@@ -18,21 +18,22 @@ RUN apt-get update -qq
 RUN apt-get install -y openjdk-8-jdk wget expect 
 
 # ------------------------------------------------------
-# --- Download Android SDK tools into $ANDROID_SDK_HOME
+# --- Download Android SDK tools into $ANDROID_HOME
 
 RUN useradd -u 1000 -M -s /bin/bash android
 RUN chown 1000 /opt
 
 
 USER android
-ENV ANDROID_SDK_HOME /opt/android-sdk-linux
+ENV ANDROID_HOME /opt/android-sdk-linux
 
 
 RUN cd /opt && wget -q https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz -O android-sdk.tgz
 RUN cd /opt && tar -xvzf android-sdk.tgz
 RUN cd /opt && rm -f android-sdk.tgz
 
-ENV PATH ${PATH}:${ANDROID_SDK_HOME}/tools:${ANDROID_SDK_HOME}/platform-tools:/opt/tools
+ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VERSION:$ANT_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
+
 
 
 # ------------------------------------------------------
@@ -129,19 +130,19 @@ RUN echo y | android update sdk --no-ui --all --filter extra-google-google_play_
 #RUN echo y | android update sdk --no-ui --all --filter addon-google_apis-google-23 | grep 'package installed'
 
 # Copy install tools
-COPY tools /opt/tools
+# COPY tools /opt/tools
 
 #Copy accepted android licenses
-COPY licenses ${ANDROID_SDK_HOME}/licenses
+COPY licenses ${ANDROID_HOME}/licenses
 
 # Update SDK
-RUN /opt/tools/android-accept-licenses.sh android update sdk --no-ui --obsolete --force
-
-USER root
+# RUN /opt/tools/android-accept-licenses.sh android update sdk --no-ui --obsolete --force
 
 # Installing Node
 RUN curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz --strip-components=1 
 RUN rm -rf /var/lib/apt/lists/*
+
+USER root
 
 RUN apt-get clean
 
