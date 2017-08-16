@@ -10,9 +10,6 @@ RUN apt-get update -y && \
 	apt-get install -y \
 		curl \
 		git \
-		make \
-		maven \
-		openjdk-8*
 
 # Base (non android specific) tools
 # -> should be added to bitriseio/docker-bitrise-base
@@ -84,9 +81,9 @@ RUN echo y | android update sdk --no-ui --all --filter build-tools-23.0.1 | grep
 #RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-25 | grep 'package installed'
 #RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-25 | grep 'package installed'
 
-RUN echo y | android update sdk --no-ui --all --filter sys-img-x86_64-android-24 | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-24 | grep 'package installed'
-RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-24 | grep 'package installed'
+# RUN echo y | android update sdk --no-ui --all --filter sys-img-x86_64-android-24 | grep 'package installed'
+# RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-24 | grep 'package installed'
+# RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-24 | grep 'package installed'
 
 #RUN echo y | android update sdk --no-ui --all --filter sys-img-x86-android-23 | grep 'package installed'
 #RUN echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-23 | grep 'package installed'
